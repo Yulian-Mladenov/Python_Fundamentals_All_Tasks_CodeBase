@@ -1,4 +1,5 @@
 import random
+
 player_input = input("Choose [r]ock, [p]aper, [s]cissors: ")
 
 rock = 'Rock'
@@ -25,5 +26,11 @@ elif computer_random_number == 2:
 elif computer_random_number == 3:
     computer_move = scissors
 
-# case in which the player win
-if player_move
+# switch cases
+if (player_move == rock and computer_move == scissors) or (player_move == paper and computer_move == rock) or \
+        (player_move == scissors and computer_move == paper):
+    print('You win!')
+elif player_move == computer_move:
+    print('Draw!')
+else:
+    print('You lose!')

@@ -1,10 +1,12 @@
 player_points_counter = 0
 computer_points_counter = 0
+number_of_rounds = 0
 
 while True:
     import random
 
     player_input = input("Choose [r]ock, [p]aper, [s]cissors: ")
+    number_of_rounds += 1
 
     rock = 'Rock'
     paper = 'Paper'
@@ -39,19 +41,24 @@ while True:
     # switch cases
     if (player_move == rock and computer_move == scissors) or (player_move == paper and computer_move == rock) or \
             (player_move == scissors and computer_move == paper):
-        player_points_counter += 1
         print("\033[30;42mYou win!\033[0m")
+        print(f"The computer chose: {computer_move}")
         print(f'Your points are: {player_points_counter}')
         print(f'The points of the computer are: {computer_points_counter}')
+        print(f'The number of rounds are: {number_of_rounds}')
     elif player_move == computer_move:
         print("\033[30;43mDraw!\033[0m")
+        print(f"The computer chose: {computer_move}")
         print(f'Your points are: {player_points_counter}')
         print(f'The points of the computer are: {computer_points_counter}')
+        print(f'The number of rounds are: {number_of_rounds}')
     else:
         computer_points_counter += 1
         print("\033[30;41mYou lose!\033[0m")
+        print(f"The computer chose: {computer_move}")
         print(f'Your points are: {player_points_counter}')
         print(f'The points of the computer are: {computer_points_counter}')
+        print(f'The number of rounds are: {number_of_rounds}')
 
     while True:
         play_again = input("Play again? [yes/no]: ")
@@ -61,6 +68,7 @@ while True:
             print('Thank you for playing!')
             print(f'Your points are: {player_points_counter}')
             print(f'The points of the computer are: {computer_points_counter}')
+            print(f'The number of rounds are: {number_of_rounds}')
             raise SystemExit()
         else:
             print("Your input is wrong. If You want to play again, please write 'yes' or 'no'")

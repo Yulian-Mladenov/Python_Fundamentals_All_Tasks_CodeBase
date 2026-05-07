@@ -1,3 +1,6 @@
+player_points_counter = 0
+computer_points_counter = 0
+
 while True:
     import random
 
@@ -36,17 +39,27 @@ while True:
     # switch cases
     if (player_move == rock and computer_move == scissors) or (player_move == paper and computer_move == rock) or \
             (player_move == scissors and computer_move == paper):
+        player_points_counter += 1
         print('You win!')
+        print(f'Your points are: {player_points_counter}')
+        print(f'The points of the computer are: {computer_points_counter}')
     elif player_move == computer_move:
         print('Draw!')
+        print(f'Your points are: {player_points_counter}')
+        print(f'The points of the computer are: {computer_points_counter}')
     else:
+        computer_points_counter += 1
         print('You lose!')
+        print(f'Your points are: {player_points_counter}')
+        print(f'The points of the computer are: {computer_points_counter}')
 
     while True:
         play_again = input("Play again? [yes/no]: ")
         if play_again == 'yes':
             break
         elif play_again == 'no':
+            print(f'Your points are: {player_points_counter}')
+            print(f'The points of the computer are: {computer_points_counter}')
             raise SystemExit('Thank you for playing!')
         else:
             print("Your input is wrong. If You want to play again, please write 'yes' or 'no'")

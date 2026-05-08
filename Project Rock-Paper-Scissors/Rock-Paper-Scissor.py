@@ -1,17 +1,23 @@
+# Library for the function which determine the computer move.
+import random
+
+# Different counters.
 player_points_counter = 0
 computer_points_counter = 0
 number_of_rounds = 0
 
+# Static variables which determine the moves from which the player and the computer can choose.
+rock = 'Rock'
+paper = 'Paper'
+scissors = 'Scissors'
+player_move = ''
+computer_move = ''
+
+# First while loop. It do that the game run endless since the player write the key input answer 'no'.
 while True:
-    import random
 
-    player_input = input("Choose [r]ock, [p]aper, [s]cissors: ")
-    number_of_rounds += 1
-
-    rock = 'Rock'
-    paper = 'Paper'
-    scissors = 'Scissors'
-    player_move = ''
+    player_input = input("Choose [r]ock, [p]aper, [s]cissors: ")  # Reading the very first input of the player.
+    number_of_rounds += 1  # This variable is counting how many games are already been played.
 
     if player_input == 'r':
         player_move = rock
@@ -20,16 +26,15 @@ while True:
     elif player_input == 's':
         player_move = scissors
     else:
-        while True:
+        while True:  # Nested loop controlling if the player wrote a wrong key word for input.
             if player_input != 'r' and player_input != 's' and player_input != 'p':
-                player_input = input("Your input is wrong! Please choose again only one of the next symbols: [r]ock, [p]aper, [s]cissors: ")
+                player_input = input("Your input is wrong! Please choose again only one of \
+                 the next symbols: [r]ock, [p]aper, [s]cissors: ")
             else:
                 player_move = player_input
                 break
-
+    # This is the heart of the game. Function to determine the move of the computer.
     computer_random_number = random.randint(1, 3)
-
-    computer_move = ''
 
     if computer_random_number == 1:
         computer_move = rock
@@ -38,9 +43,10 @@ while True:
     elif computer_random_number == 3:
         computer_move = scissors
 
-    # switch cases
+    # Switch cases. Here is determined the end of game.
     if (player_move == rock and computer_move == scissors) or (player_move == paper and computer_move == rock) or \
             (player_move == scissors and computer_move == paper):
+        player_points_counter += 1
         print("\033[30;42mYou win!\033[0m")
         print(f"The computer chose: {computer_move}")
         print(f'Your points are: {player_points_counter}')
@@ -60,7 +66,7 @@ while True:
         print(f'The points of the computer are: {computer_points_counter}')
         print(f'The number of rounds are: {number_of_rounds}')
 
-    while True:
+    while True:  # Third nested loop. It function is to continue the game if the player want.
         play_again = input("Play again? [yes/no]: ")
         if play_again == 'yes':
             break
@@ -72,4 +78,3 @@ while True:
             raise SystemExit()
         else:
             print("Your input is wrong. If You want to play again, please write 'yes' or 'no'")
-
